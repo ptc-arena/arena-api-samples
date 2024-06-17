@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "ce6ccfa4-caa6-4ac8-b4b7-f87b9cff0f68",
+		"_postman_id": "2950c02d-a8f0-4326-88b0-46a6d41c7813",
 		"name": "Arena API Samples",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "10453"
+		"_exporter_id": "21829988"
 	},
 	"item": [
 		{
@@ -3082,6 +3082,79 @@
 										"outboundintegrations",
 										"I0K3HEIKVCNUDWFYHJ8Q",
 										"administrators"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "API Usage",
+					"item": [
+						{
+							"name": "Get API Usage",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"arena_session_id\", data.arenaSessionId);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json; charset=utf-8",
+										"type": "text"
+									},
+									{
+										"key": "X-Arena-Usage-Reason",
+										"value": "~!@#$¥%&(*&^%$#@!#$%^&^%$\\n \\t ]r <'script'>alter</'script'>",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/settings/recentactivities/apiusages?offset=1&limit=400&dateTimeFrom=2024-03-21T00:00:00Z&dateTimeTo=2024-03-27T00:00:00Z",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"recentactivities",
+										"apiusages"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "400"
+										},
+										{
+											"key": "dateTimeFrom",
+											"value": "2024-03-21T00:00:00Z"
+										},
+										{
+											"key": "dateTimeTo",
+											"value": "2024-03-27T00:00:00Z"
+										}
 									]
 								}
 							},
@@ -17436,6 +17509,1692 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "API Account User",
+			"item": [
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "Get Employees from Account Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/accountusers/employees",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"accountusers",
+										"employees"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "-1",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "400",
+											"disabled": true
+										},
+										{
+											"key": "lastName",
+											"value": "*z",
+											"disabled": true
+										},
+										{
+											"key": "firstName",
+											"value": "joe",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "*",
+											"disabled": true
+										},
+										{
+											"key": "department",
+											"value": "*e",
+											"disabled": true
+										},
+										{
+											"key": "location",
+											"value": "*e",
+											"disabled": true
+										},
+										{
+											"key": "manager",
+											"value": "*i*",
+											"disabled": true
+										},
+										{
+											"key": "notes",
+											"value": "*",
+											"disabled": true
+										},
+										{
+											"key": "address.state",
+											"value": "CALIFORNIA,OREGON",
+											"disabled": true
+										},
+										{
+											"key": "enabled",
+											"value": "test",
+											"disabled": true
+										},
+										{
+											"key": "address.province",
+											"value": "*",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "wezhou%2Bmachine@ptc.com",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Employee",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"joe28@approver.com\",\n    \"enabled\": false,\n    \"firstName\": \"Joe\",\n    \"lastName\": \"Approver\",\n    \"department\": \"Office of the president\",\n    \"location\": \"Kiev\",\n    \"title\": \"Grand Master\",\n    \"manager\": \"Mr. Biden\",\n    \"notes\": \"Joe is here for 2 years\",\n    \"phone\": \"+380 044-521-5000\",\n    \"mobile\": \"+380 044-811-1531\",\n    \"fax\": null,\n    \"address\": {\n        \"address1\": \"4 A.I. Sikorsky St.\",\n        \"address2\": null,\n        \"city\": \"Kyiv\",\n        \"country\": \"Ukraine\",\n        \"province\": \"Kyiv Oblast\",\n        \"postalCode\": \"04112\",\n        \"state\": null\n    },\n    \"isAdministrator\": false,\n    \"applicationLanguage\": \"English (United States)\",\n    \"temporaryPassword\": \"Arena123\",\n    \"notifyUser\": true\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/accountusers/employees",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"accountusers",
+										"employees"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Employee",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"joe28_1@approver.com\",\n    \"enabled\": true,\n    \"firstName\": \"Joeee\",\n    \"lastName\": \"Approverrrr\",\n    \"department\": \"Office of the presidents\",\n    \"location\": \"Kievvv\",\n    \"title\": \"Grand Master123\",\n    \"manager\": \"Mr. Bidennn\",\n    \"notes\": \"Joe is here for 5 years\",\n    \"phone\": \"+380 044-521-6000\",\n    \"mobile\": \"+380 044-811-1532\",\n    \"fax\": \"+380 044-521-6000\",\n    \"address\": {\n        \"address1\": \"5 A.I. Sikorsky St.\",\n        \"address2\": \"6 A.I. Sikorsky St.\",\n        \"city\": \"Kyivvv\",\n        \"country\": \"Albania\",\n        \"province\": \"Kyiv Oblastttt\",\n        \"postalCode\": \"041123\",\n        \"state\": \"ALASKA\"\n    },\n    \"isAdministrator\": true,\n    \"applicationLanguage\": \"Chinese (China) - 中文 (中国)\",\n    \"temporaryPassword\": \"Arena1234\",\n    \"notifyUser\": false\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/accountusers/employees/L4N6N6P8RATCCH3G",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"accountusers",
+										"employees",
+										"L4N6N6P8RATCCH3G"
+									],
+									"query": [
+										{
+											"key": "setnull",
+											"value": "true",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Machine User",
+					"item": [
+						{
+							"name": "Get Machine User from Account Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/settings/accountusers/machines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"accountusers",
+										"machines"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "401",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "enabled",
+											"value": "false",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Machine User",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "*h*",
+											"disabled": true
+										},
+										{
+											"key": "owner.guid",
+											"value": "UDWFWFYH0J2LLR26",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Machine User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"erp_integration27@approver.com\",\n    \"enabled\": true,\n    \"name\": \"ERP Integration 27\",\n    \"owner\": {\n        \"guid\": \"M5O7O7Q9SBUDEZLG\"\n    },\n    \"isAdministrator\": true,\n    \"applicationLanguage\": \"English (United States)\",\n    \"loginConflictResolution\": \"PREVENT_NEW_LOGINS\",\n    \"notes\": \"Used for ERP Integration\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/accountusers/machines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"accountusers",
+										"machines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Machine User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"erp_integration27_1@approver.com\",\n    \"enabled\": false,\n    \"name\": \"ERP Integration 27_1\",\n    \"owner\": {\n        \"guid\": \"ATCVCVEXGZI1YHNF\"\n    },\n    \"isAdministrator\": false,\n    \"applicationLanguage\": \"Chinese (China) - 中文 (中国)\",\n    \"loginConflictResolution\": \"TERMINATE_EXISTING_SESSION\",\n    \"notes\": \"Used for ERP Integration1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/accountusers/machines/J2L4L4N6P8RA659P",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"accountusers",
+										"machines",
+										"J2L4L4N6P8RA659P"
+									],
+									"query": [
+										{
+											"key": "setnull",
+											"value": "true",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Users from Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/settings/accountusers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"settings",
+								"accountusers"
+							],
+							"query": [
+								{
+									"key": "province",
+									"value": "123123",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API Workspace User",
+			"item": [
+				{
+					"name": "Policy",
+					"item": [
+						{
+							"name": "Get Policy from Workspace",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/accesspolicies",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"accesspolicies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Users from Access Policy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/accesspolicies/UCWFKA9RU3VL4N6P4C6S/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"accesspolicies",
+										"UCWFKA9RU3VL4N6P4C6S",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Group from Access Policy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/accesspolicies/1J3MRHGY1A2SBUDWFQ0G/usergroups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"accesspolicies",
+										"1J3MRHGY1A2SBUDWFQ0G",
+										"usergroups"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User Group",
+					"item": [
+						{
+							"name": "Create User Group",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"assignability\": [\n        \"QUALITY\"\n    ],\n    \"description\": \"Manage Quality Processes\",\n    \"enabled\": true,\n    \"name\": \"Quality Manager1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/usergroups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"usergroups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User Group",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"assignability\": [\n    \"ACCESS_POLICIES\"\n  ],\n    \"description\": \"Manage Access Policies\",\n    \"enabled\": false,\n    \"name\": \"Quality Manager1_1\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/usergroups/FXH05VUCFOUH0J2L171P",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"usergroups",
+										"FXH05VUCFOUH0J2L171P"
+									],
+									"query": [
+										{
+											"key": "setnull",
+											"value": "true",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Group",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/usergroups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"usergroups"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Quality Manager*",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "400",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User Group from Workspace",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/usergroups/FXH05VUCFOUH0J2L171P",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"usergroups",
+										"FXH05VUCFOUH0J2L171P"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Access Policies from User Group",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/usergroups/L3N6B10ILU0N6P8RAPLV/accesspolicies",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"usergroups",
+										"L3N6B10ILU0N6P8RAPLV",
+										"accesspolicies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Policy to User Group",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessPolicy\": {\n        \"guid\": \"K2M5A0ZHKTLBUDWFYNI1\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/usergroups/BTDW1RQ8BKQDWFYH0YEH/accesspolicies",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"usergroups",
+										"BTDW1RQ8BKQDWFYH0YEH",
+										"accesspolicies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Access Policy from User Group",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/usergroups/L3N6B10ILU0N6P8RAPLV/accesspolicies/L3N6B10ILUMBUDWFSZ0E",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"usergroups",
+										"L3N6B10ILU0N6P8RAPLV",
+										"accesspolicies",
+										"L3N6B10ILUMBUDWFSZ0E"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "Get Employee",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/employees",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"employees"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "333",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "400",
+											"disabled": true
+										},
+										{
+											"key": "lastName",
+											"value": "*a*",
+											"disabled": true
+										},
+										{
+											"key": "firstName",
+											"value": "joe",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "*y*",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "*e*",
+											"disabled": true
+										},
+										{
+											"key": "department",
+											"value": "*",
+											"disabled": true
+										},
+										{
+											"key": "manager",
+											"value": "*g*",
+											"disabled": true
+										},
+										{
+											"key": "location",
+											"value": "*f",
+											"disabled": true
+										},
+										{
+											"key": "notes",
+											"value": "*a*",
+											"disabled": true
+										},
+										{
+											"key": "address.state",
+											"value": "*",
+											"disabled": true
+										},
+										{
+											"key": "address.province",
+											"value": "*j*",
+											"disabled": true
+										},
+										{
+											"key": "address.country",
+											"value": "cn",
+											"disabled": true
+										},
+										{
+											"key": "enabled",
+											"value": "true",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Employee to Workspace",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"license\": {\n    \"analytics\": \"VIEWER\",\n    \"training\": true,\n    \"name\": \"FULL\"\n  },\n  \"accountUser\": {\n    \"email\": \"joe28@approver.com\",\n    \"guid\":\"I1K3K3M5O7Q9548T\"\n  }\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/employees",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"employees"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Employee",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"license\": {\n        \"name\": \"READ_ONLY\",\n        \"training\": false,\n        \"analytics\": \"DISABLED\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/employees/WEYHMCBTW5M5O7Q95480",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"employees",
+										"WEYHMCBTW5M5O7Q95480"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Employee from Workspace",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/employees/WEYHMCBTW5M5O7Q95480",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"employees",
+										"WEYHMCBTW5M5O7Q95480"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Group from Employee",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/employees/K2M5A0ZHKTATCVEXT1IR/usergroups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"employees",
+										"K2M5A0ZHKTATCVEXT1IR",
+										"usergroups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add User Group to Employee",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userGroup\": {\n        \"guid\": \"J1L49ZYGJSYL4N6P764E\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/employees/N5P8D32KNWDWFYH00HTR/usergroups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"employees",
+										"N5P8D32KNWDWFYH00HTR",
+										"usergroups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove User Group from Employee",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/employees/N5P8D32KNWDWFYH00HTR/usergroups/2K4NSIHZ2BGZI1K3OFHJ",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"employees",
+										"N5P8D32KNWDWFYH00HTR",
+										"usergroups",
+										"2K4NSIHZ2BGZI1K3OFHJ"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Access Policies from Employee",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/employees/N5P8D32KNWDWFYH00HTR/accesspolicies",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"employees",
+										"N5P8D32KNWDWFYH00HTR",
+										"accesspolicies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Access Policy to Employee",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessPolicy\": {\n        \"guid\": \"UCWFKA9RU3VL4N6P4C6S\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/employees/N5P8D32KNWDWFYH00HTR/accesspolicies",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"employees",
+										"N5P8D32KNWDWFYH00HTR",
+										"accesspolicies"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Access Policy from Employee",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/employees/N5P8D32KNWDWFYH00HTR/accesspolicies/DVFY3TSADME3M5O6CDUW",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"employees",
+										"N5P8D32KNWDWFYH00HTR",
+										"accesspolicies",
+										"DVFY3TSADME3M5O6CDUW"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Partner",
+					"item": [
+						{
+							"name": "Get Partners from Workspace",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/partners",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"partners"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Partner",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"license\": {\n\n        \"name\":\"APPROVER\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/partners/7P9SXNM47GXGZI1KK61C",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"partners",
+										"7P9SXNM47GXGZI1KK61C"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Partner from Workspace",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/partners/0I2LQGFX09Q9SBUDDI4E",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"partners",
+										"0I2LQGFX09Q9SBUDDI4E"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Group from Partner",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/partners/3L5OTJI03CTCVEXGHDXC/usergroups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"partners",
+										"3L5OTJI03CTCVEXGHDXC",
+										"usergroups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add User Group to Partner",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userGroup\": {\n        \"guid\": \"L3N6B10ILU0N6P8RAPLV\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/partners/CUEX2SR9CL2L4N6PQMFQ/usergroups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"partners",
+										"CUEX2SR9CL2L4N6PQMFQ",
+										"usergroups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove User Group from Partner",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/partners/CUEX2SR9CL2L4N6PQMFQ/usergroups/1J3MRHGY1AFYH0J2JRR6",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"partners",
+										"CUEX2SR9CL2L4N6PQMFQ",
+										"usergroups",
+										"1J3MRHGY1AFYH0J2JRR6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Access Policies from Partner",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/partners/CUEX2SR9CL2L4N6PQMFQ/accesspolicies",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"partners",
+										"CUEX2SR9CL2L4N6PQMFQ",
+										"accesspolicies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Access Policy to Partner",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									},
+									{
+										"key": "arena_session_id",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessPolicy\": {\n        \"guid\": \"2K4NSIHZ2B3TCVEXGR1D\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/partners/CUEX2SR9CL2L4N6PQMFQ/accesspolicies",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"partners",
+										"CUEX2SR9CL2L4N6PQMFQ",
+										"accesspolicies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Access Policy form Partner",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/partners/CUEX2SR9CL2L4N6PQMFQ/accesspolicies/XFZINDCUX6YN6P8R6QF1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"partners",
+										"CUEX2SR9CL2L4N6PQMFQ",
+										"accesspolicies",
+										"XFZINDCUX6YN6P8R6QF1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Machine User",
+					"item": [
+						{
+							"name": "Get Machine User from Workspace",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/machines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"machines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Machine User to Workspace",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accountUser\": {\n        \"email\":\"erp_integration27_1@approver.com\"\n    },\n    \"license\": {\n        \"name\": \"ADDON_PRODUCT_ONLY\",\n        \"training\":true,\n        \"analytics\": \"EDITOR\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/machines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"machines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Machine User",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"license\": {\n        \"name\": \"FULL\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/machines/XFZINDCUX6N6P8RA659R",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"machines",
+										"XFZINDCUX6N6P8RA659R"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Machine User from Workspace",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/machines/XFZINDCUX6N6P8RA659R",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"machines",
+										"XFZINDCUX6N6P8RA659R"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Group from Machine User",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/machines/L3N6B10ILUBUDWFYZU31/usergroups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"machines",
+										"L3N6B10ILUBUDWFYZU31",
+										"usergroups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add User Group to Machine",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userGroup\": {\n        \"guid\": \"9RBUZPO69IOBUDWFY16B\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/machines/L3N6B10ILUBUDWFYZU31/usergroups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"machines",
+										"L3N6B10ILUBUDWFYZU31",
+										"usergroups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove User Group from Machine",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/machines/L3N6B10ILUBUDWFYZU31/usergroups/2K4NSIHZ2BGZI1K3KSSY",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"machines",
+										"L3N6B10ILUBUDWFYZU31",
+										"usergroups",
+										"2K4NSIHZ2BGZI1K3KSSY"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Access Policies from Machine User",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/machines/L3N6B10ILUBUDWFYZU31/accesspolicies",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"machines",
+										"L3N6B10ILUBUDWFYZU31",
+										"accesspolicies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Access Policy to Machine User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessPolicy\": {\n        \"guid\": \"K2M5A0ZHKTLBUDWFYNI1\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/settings/users/machines/L3N6B10ILUBUDWFYZU31/accesspolicies",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"machines",
+										"L3N6B10ILUBUDWFYZU31",
+										"accesspolicies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Access Policy from Machine User",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/machines/L3N6B10ILUBUDWFYZU31/accesspolicies/0I2LQGFX091Q9SBU9TH7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"machines",
+										"L3N6B10ILUBUDWFYZU31",
+										"accesspolicies",
+										"0I2LQGFX091Q9SBU9TH7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Supplier",
+					"item": [
+						{
+							"name": "Get Basic Supplier",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/basicsuppliers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"basicsuppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Advanced Supplier",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "arena_session_id",
+										"value": "{{arena_session_id}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/settings/users/advancedsuppliers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"settings",
+										"users",
+										"advancedsuppliers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
